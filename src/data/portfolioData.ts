@@ -6,6 +6,19 @@ import {
   ProjectItem,
 } from '../types/portfolio';
 
+export interface CodeSnippet {
+  language: string;
+  filename: string;
+  code: string;
+  description: string;
+}
+
+export interface TerminalCommand {
+  command: string;
+  description: string;
+  output: string | string[];
+}
+
 export const personalInfo: PersonalInfo = {
   name: "Yogesh E",
   tagline: "Software Development Engineer",
@@ -25,39 +38,101 @@ export const personalInfo: PersonalInfo = {
   githubUsername: "Yogesh10217",
 };
 
+export const terminalCommands: Record<string, string | string[]> = {
+  help: [
+    "Available YogeshOS Commands:",
+    "  skills     - View technical stack & core competencies",
+    "  projects   - List flagship AI & backend engineering projects",
+    "  experience - View professional work timeline (Krama AI, KPMG)",
+    "  patent     - View patented AI document analysis architecture details",
+    "  metrics    - Display live system & academic metrics HUD",
+    "  contact    - Get direct email, phone, GitHub & LinkedIn info",
+    "  clear      - Clear terminal screen",
+  ],
+  skills: [
+    "⚡ TECHNICAL ARSENAL:",
+    "  • Backend: FastAPI, Python, Node.js, Express.js, SQLAlchemy, REST APIs, Microservices",
+    "  • Languages: Python, C++, JavaScript, TypeScript, Java, SQL",
+    "  • Databases: PostgreSQL, MongoDB, MySQL",
+    "  • DevOps & Cloud: Docker, Git, GitHub, Linux, Postman, CI/CD",
+    "  • AI & ML: LLM Orchestration, Prompt Engineering, OCR Pipelines, Gemini API",
+    "  • Core CS: DSA, System Design, OOP, DBMS, OS, Computer Networks",
+  ],
+  projects: [
+    "🚀 FLAGSHIP PROJECTS:",
+    "  1. LLM Inference Engine (Open Source)",
+    "     Multi-provider LLM orchestration (OpenAI + Ollama) with Factory Pattern & SSE streaming.",
+    "  2. AI Research Tool & Fake News Detection (Patented SaaS)",
+    "     Semantic verification & NLP content classification powered by Google Gemini API.",
+    "  3. Subscription Tracker (Deployed Backend)",
+    "     JWT authenticated management platform with MongoDB dynamic schemas & automated emails.",
+  ],
+  experience: [
+    "💼 WORK EXPERIENCE:",
+    "  • Krama AI | Founding Backend Engineer (Dec 2025 – Present)",
+    "    End-to-end claims platform with FastAPI, SQLAlchemy, PostgreSQL, Docker & OCR.",
+    "  • KPMG | ServiceNow Developer Intern (Feb 2026 – Present)",
+    "    Enterprise ITSM workflows, Flow Designer, Business Rules & REST integrations.",
+    "  • DSCE | B.E. Information Science (2022 – 2026)",
+    "    CGPA: 8.9 / 10 | Focus on Backend Systems & Distributed Architectures.",
+  ],
+  patent: [
+    "💡 PATENTED INTELLECTUAL PROPERTY:",
+    "  Title: Intelligent Document Analysis & Semantic Verification Workflow",
+    "  Status: Patent Filed (AI Architecture)",
+    "  Innovation: Combining multi-modal NLP pipelines with LLM verification for automated fact checking.",
+  ],
+  metrics: [
+    "📊 SYSTEM METRICS HUD:",
+    "  • Academic CGPA: 8.9 / 10",
+    "  • Certifications: ServiceNow CAD & CSA",
+    "  • Patents: 1 Filed",
+    "  • Backend Architecture: 100% Async FastAPI Endpoints",
+    "  • Containerization: Fully Dockerized Microservices",
+  ],
+  contact: [
+    "📬 CONTACT INFORMATION:",
+    "  • Email: eyogesh104@gmail.com",
+    "  • Phone: +91-8050255818",
+    "  • Location: Bangalore, India",
+    "  • GitHub: https://github.com/Yogesh10217",
+    "  • LinkedIn: https://www.linkedin.com/in/eyogesh/",
+  ],
+};
+
 export const techStack: TechCategory[] = [
   {
-    category: "Backend",
+    category: "Backend Engineering",
     icon: "SERVER",
     skills: ["Python", "FastAPI", "Node.js", "Express.js", "SQLAlchemy", "REST APIs", "Microservices"],
   },
   {
     category: "Languages",
     icon: "CODE",
-    skills: ["JavaScript", "C++", "Java", "TypeScript", "SQL", "Python"],
+    skills: ["Python", "C++", "JavaScript", "TypeScript", "Java", "SQL"],
   },
   {
-    category: "Database",
+    category: "Databases & Storage",
     icon: "DB",
-    skills: ["PostgreSQL", "MongoDB", "MySQL"],
+    skills: ["PostgreSQL", "MongoDB", "MySQL", "Storage Abstraction"],
   },
   {
-    category: "DevOps & Tools",
+    category: "DevOps & Infrastructure",
     icon: "DEPLOY",
     skills: ["Docker", "Git", "GitHub", "Linux", "Postman", "CI/CD"],
   },
   {
-    category: "Frontend",
+    category: "Frontend & UI",
     icon: "UI",
     skills: ["React.js", "Tailwind CSS", "HTML5", "CSS3"],
   },
   {
-    category: "AI / ML",
+    category: "AI & ML Systems",
     icon: "AI",
-    skills: ["LLMs", "Prompt Engineering", "OCR", "Google Gemini API"],
+    skills: ["LLM Inference", "Prompt Engineering", "OCR Pipelines", "Google Gemini API"],
   },
   {
-    category: "Core CS",
+    category: "Core CS Fundamentals",
     icon: "CODE",
     skills: ["Data Structures & Algorithms", "OOP", "DBMS", "Operating Systems", "Computer Networks", "System Design"],
   },
@@ -127,6 +202,98 @@ export const achievements: AchievementItem[] = [
     title: "CGPA 8.9/10",
     subtitle: "Academic Excellence",
   },
+];
+
+export const codeSnippets: CodeSnippet[] = [
+  {
+    language: "python",
+    filename: "llm_factory.py",
+    description: "Provider Factory Pattern for Multi-Provider LLM Orchestration",
+    code: `from abc import ABC, abstractmethod
+from typing import AsyncGenerator
+
+class BaseLLMProvider(ABC):
+    @abstractmethod
+    async def stream_inference(self, prompt: str) -> AsyncGenerator[str, None]:
+        pass
+
+class OpenAIProvider(BaseLLMProvider):
+    async def stream_inference(self, prompt: str) -> AsyncGenerator[str, None]:
+        # Stream response chunks via SSE
+        yield "Chunk from OpenAI API..."
+
+class OllamaProvider(BaseLLMProvider):
+    async def stream_inference(self, prompt: str) -> AsyncGenerator[str, None]:
+        # Stream response chunks locally
+        yield "Chunk from local Ollama model..."
+
+class ProviderFactory:
+    _registry = {
+        "gpt-4o": OpenAIProvider,
+        "llama-3": OllamaProvider,
+    }
+
+    @classmethod
+    def get_provider(cls, model_id: str) -> BaseLLMProvider:
+        provider_cls = cls._registry.get(model_id)
+        if not provider_cls:
+            raise ValueError(f"Model {model_id} not registered")
+        return provider_cls()`
+  },
+  {
+    language: "python",
+    filename: "fastapi_service.py",
+    description: "FastAPI Dependency Injection & Storage Abstraction",
+    code: `from fastapi import FastAPI, Depends, HTTPException, status
+from sqlalchemy.ext.asyncio import AsyncSession
+from pydantic import BaseModel
+
+app = FastAPI(title="Claims Processing Engine", version="1.0.0")
+
+class ClaimIngestRequest(BaseModel):
+    policy_id: str
+    document_url: str
+
+@app.post("/api/v1/claims/process", status_code=status.HTTP_202_ACCEPTED)
+async def process_claim(
+    payload: ClaimIngestRequest,
+    db: AsyncSession = Depends(get_db_session),
+):
+    # Asynchronous pipeline dispatch
+    task_id = await dispatch_ocr_pipeline(payload.document_url, db)
+    return {"status": "processing", "task_id": task_id}`
+  },
+  {
+    language: "docker",
+    filename: "docker-compose.yml",
+    description: "Containerized Backend Architecture & PostgreSQL Service",
+    code: `version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://postgres:pass@db:5432/claims_db
+      - LOG_LEVEL=INFO
+    depends_on:
+      - db
+
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: claims_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: pass
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:`
+  }
 ];
 
 export const projects: ProjectItem[] = [

@@ -1,6 +1,8 @@
 import { useState } from 'react';
-import { HeroSection } from './components/sections/HeroSection';
+import { TerminalHero } from './components/sections/TerminalHero';
 import { MarqueeSection } from './components/sections/MarqueeSection';
+import { ArchitectureBlueprint } from './components/sections/ArchitectureBlueprint';
+import { CodeInspectorSection } from './components/sections/CodeInspectorSection';
 import { AboutSection } from './components/sections/AboutSection';
 import { ServicesSection } from './components/sections/ServicesSection';
 import { ProjectsSection } from './components/sections/ProjectsSection';
@@ -21,35 +23,41 @@ export function App() {
   };
 
   return (
-    <div className="relative w-full bg-[#0C0C0C] text-[#D7E2EA] font-sans antialiased selection:bg-purple-600 selection:text-white" style={{ overflowX: 'clip' }}>
-      {/* 1. Hero Section */}
-      <HeroSection
+    <div className="relative w-full bg-[#08090C] text-[#D7E2EA] font-sans antialiased selection:bg-cyan-500 selection:text-black" style={{ overflowX: 'clip' }}>
+      {/* 1. Terminal CLI Hero Section */}
+      <TerminalHero
         onContactClick={() => setIsContactModalOpen(true)}
         onNavigate={handleNavigate}
       />
 
-      {/* 2. Skills & Marquee Section */}
+      {/* 2. Technical Arsenal Ticker */}
       <MarqueeSection />
 
-      {/* 3. About & Achievements Section */}
+      {/* 3. Interactive Architecture Blueprint */}
+      <ArchitectureBlueprint />
+
+      {/* 4. Live Code Inspector */}
+      <CodeInspectorSection />
+
+      {/* 5. Engineering Bio & CS Fundamentals */}
       <AboutSection
         onContactClick={() => setIsContactModalOpen(true)}
       />
 
-      {/* 4. Experience & Education Section */}
+      {/* 6. Career Track Record & Experience */}
       <ServicesSection />
 
-      {/* 5. Projects & Architecture Section */}
+      {/* 7. Flagship Engineering Projects */}
       <ProjectsSection
         onSelectProject={(project) => setSelectedProject(project)}
       />
 
-      {/* 6. Footer Section */}
+      {/* 8. High-Tech Footer */}
       <FooterSection
         onContactClick={() => setIsContactModalOpen(true)}
       />
 
-      {/* Interactive Modals */}
+      {/* Modals */}
       <ContactModal
         isOpen={isContactModalOpen}
         onClose={() => setIsContactModalOpen(false)}

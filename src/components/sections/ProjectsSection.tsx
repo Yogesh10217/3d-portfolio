@@ -4,7 +4,7 @@ import { FadeIn } from '../common/FadeIn';
 import { LiveProjectButton } from '../common/LiveProjectButton';
 import { projects } from '../../data/portfolioData';
 import { ProjectItem } from '../../types/portfolio';
-import { Github, Layers, Sparkles } from 'lucide-react';
+import { Github, Layers, Sparkles, Cpu } from 'lucide-react';
 
 interface ProjectCardProps {
   project: ProjectItem;
@@ -41,14 +41,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         style={{
           scale,
         }}
-        className="w-full max-w-6xl bg-[#0C0C0C] border-2 border-[#D7E2EA] rounded-[40px] sm:rounded-[50px] md:rounded-[60px] p-4 sm:p-6 md:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.8)] origin-top transition-shadow duration-300"
+        className="w-full max-w-6xl bg-[#090A0E] border-2 border-cyan-500/40 rounded-[40px] sm:rounded-[50px] md:rounded-[60px] p-4 sm:p-6 md:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.9)] origin-top transition-shadow duration-300"
       >
         {/* Top Row: Number, Category, Project Name, Actions */}
-        <div className="flex flex-wrap items-center justify-between gap-4 mb-6 sm:mb-8 pb-4 border-b border-[#D7E2EA]/20">
+        <div className="flex flex-wrap items-center justify-between gap-4 mb-6 sm:mb-8 pb-4 border-b border-cyan-500/20">
           <div className="flex items-center gap-4 sm:gap-6 flex-wrap">
             {/* Huge Number */}
             <span
-              className="font-black text-[#D7E2EA] leading-none tracking-tight select-none font-kanit"
+              className="font-black text-cyan-400 leading-none tracking-tight select-none font-kanit"
               style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)' }}
             >
               {`0${index + 1}`}
@@ -56,14 +56,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
             <div className="flex flex-col">
               <div className="flex items-center gap-2">
-                <span className="text-xs uppercase tracking-widest text-purple-300 bg-purple-950/60 border border-purple-500/30 px-3 py-0.5 rounded-full font-medium">
+                <span className="text-xs font-mono uppercase tracking-widest text-cyan-300 bg-cyan-950/80 border border-cyan-500/40 px-3 py-0.5 rounded-full font-bold">
                   {project.status}
                 </span>
                 <span className="text-xs uppercase tracking-widest text-[#D7E2EA]/60 font-light">
                   • {project.type}
                 </span>
               </div>
-              <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black uppercase text-[#D7E2EA] tracking-wide font-kanit mt-1">
+              <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black uppercase text-white tracking-wide font-kanit mt-1">
                 {project.title}
               </h3>
             </div>
@@ -90,14 +90,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
         {/* Short Description & Tech Badges */}
         <div className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-          <p className="text-sm sm:text-base text-[#D7E2EA]/80 max-w-3xl leading-relaxed">
+          <p className="text-sm sm:text-base text-[#D7E2EA]/90 max-w-3xl leading-relaxed font-light">
             {project.description}
           </p>
           <div className="flex flex-wrap gap-1.5 shrink-0">
             {project.tech.map((t) => (
               <span
                 key={t}
-                className="text-xs font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-purple-200"
+                className="text-xs font-mono px-2.5 py-1 rounded-md bg-cyan-950/50 border border-cyan-500/30 text-cyan-300"
               >
                 {t}
               </span>
@@ -168,10 +168,14 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
   return (
     <section
       id="projects"
-      className="relative w-full bg-[#0C0C0C] rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 z-10 px-4 sm:px-8 md:px-10 pt-20 sm:pt-28 md:pt-36 pb-24 sm:pb-32"
+      className="relative w-full bg-[#08090C] rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 z-10 px-4 sm:px-8 md:px-12 pt-20 sm:pt-28 md:pt-36 pb-24 sm:pb-32 border-t border-cyan-500/20"
     >
       {/* Section Heading */}
       <FadeIn delay={0} y={40} className="text-center mb-16 sm:mb-20 md:mb-24">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-950/70 border border-cyan-500/30 text-cyan-300 text-xs font-mono uppercase tracking-widest mb-3">
+          <Cpu className="w-3.5 h-3.5 text-cyan-400" />
+          <span>Flagship Engineering Work</span>
+        </div>
         <h2
           className="hero-heading font-black uppercase leading-none tracking-tight text-center"
           style={{ fontSize: 'clamp(3rem, 12vw, 160px)' }}

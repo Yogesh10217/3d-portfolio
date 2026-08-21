@@ -1,16 +1,21 @@
 import React from 'react';
 import { FadeIn } from '../common/FadeIn';
 import { experience } from '../../data/portfolioData';
+import { Briefcase, Calendar, MapPin, CheckCircle2 } from 'lucide-react';
 
 export const ServicesSection: React.FC = () => {
   return (
     <section
       id="experience"
-      className="relative w-full bg-[#FFFFFF] text-[#0C0C0C] rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] px-5 sm:px-8 md:px-10 py-20 sm:py-24 md:py-32 z-0"
+      className="relative w-full bg-[#FFFFFF] text-[#0C0C0C] rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] px-5 sm:px-8 md:px-12 py-20 sm:py-24 md:py-32 z-0 select-none"
     >
       <div className="max-w-5xl mx-auto w-full">
         {/* Section Heading */}
         <FadeIn delay={0} y={40} className="text-center mb-16 sm:mb-20 md:mb-28">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/5 border border-black/10 text-black text-xs font-mono uppercase tracking-widest mb-3">
+            <Briefcase className="w-3.5 h-3.5" />
+            <span>Career &amp; Engineering Track Record</span>
+          </div>
           <h2
             className="font-black uppercase leading-none tracking-tight text-[#0C0C0C]"
             style={{ fontSize: 'clamp(2.8rem, 11vw, 150px)' }}
@@ -31,7 +36,7 @@ export const ServicesSection: React.FC = () => {
               <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 sm:gap-8 md:gap-14">
                 {/* Huge Number */}
                 <div
-                  className="font-black text-[#0C0C0C] leading-none shrink-0 select-none tracking-tighter"
+                  className="font-black text-[#0C0C0C] leading-none shrink-0 select-none tracking-tighter font-kanit"
                   style={{ fontSize: 'clamp(2.8rem, 9vw, 120px)' }}
                 >
                   {`0${index + 1}`}
@@ -44,15 +49,16 @@ export const ServicesSection: React.FC = () => {
                       className="font-bold uppercase text-[#0C0C0C] tracking-wide font-kanit"
                       style={{ fontSize: 'clamp(1.2rem, 2.4vw, 2.2rem)' }}
                     >
-                      {item.role} <span className="font-normal text-purple-700">@ {item.company}</span>
+                      {item.role} <span className="font-semibold text-purple-700">@ {item.company}</span>
                     </h3>
-                    <span className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-black/60 bg-black/5 px-3 py-1 rounded-full">
-                      {item.year} • {item.type}
+                    <span className="text-xs sm:text-sm font-mono font-semibold uppercase tracking-wider text-black/70 bg-black/5 border border-black/10 px-3 py-1 rounded-full flex items-center gap-1.5">
+                      <Calendar className="w-3.5 h-3.5 text-purple-700" />
+                      <span>{item.year}</span>
                     </span>
                   </div>
 
                   <p
-                    className="font-light text-[#0C0C0C] leading-relaxed max-w-2xl text-opacity-70"
+                    className="font-light text-[#0C0C0C] leading-relaxed max-w-2xl text-opacity-75"
                     style={{
                       fontSize: 'clamp(0.9rem, 1.6vw, 1.25rem)',
                       color: 'rgba(12, 12, 12, 0.75)',
@@ -67,7 +73,7 @@ export const ServicesSection: React.FC = () => {
                       {item.tech.map((t) => (
                         <span
                           key={t}
-                          className="text-xs uppercase font-medium tracking-wider px-2.5 py-1 rounded-md bg-[#0C0C0C] text-white"
+                          className="text-xs font-mono uppercase font-semibold tracking-wider px-3 py-1 rounded-md bg-[#0C0C0C] text-white"
                         >
                           {t}
                         </span>
