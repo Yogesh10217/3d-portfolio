@@ -58,6 +58,7 @@ export interface ProjectItem {
   type: string;
   github: string;
   demo: string | null;
+  liveUrl?: string;
   tech: string[];
   features: string[];
   architecture: ArchitectureStep[];

@@ -4,7 +4,7 @@ import { FadeIn } from '../common/FadeIn';
 import { LiveProjectButton } from '../common/LiveProjectButton';
 import { projects } from '../../data/portfolioData';
 import { ProjectItem } from '../../types/portfolio';
-import { Github, Layers, Sparkles, Cpu } from 'lucide-react';
+import { Github, Layers, Sparkles, Cpu, ExternalLink } from 'lucide-react';
 
 interface ProjectCardProps {
   project: ProjectItem;
@@ -70,6 +70,18 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           </div>
 
           <div className="flex items-center gap-3 flex-wrap">
+            {(project.demo || project.liveUrl) && (
+              <a
+                href={project.demo || project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-cyan-500/20 border border-cyan-400 text-cyan-300 hover:bg-cyan-500/30 text-xs font-mono uppercase font-bold tracking-wider transition-colors"
+              >
+                <span>Live Website</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+            )}
+
             {project.github && (
               <a
                 href={project.github}
