@@ -105,8 +105,8 @@ export const terminalCommands: Record<string, string | string[]> = {
     "     Multi-provider LLM orchestration (OpenAI + Ollama) with Factory Pattern & SSE streaming.",
     "  2. AI Research Tool & Fake News Detection (Patented SaaS)",
     "     Semantic verification & NLP content classification powered by Google Gemini API.",
-    "  3. Subscription Tracker (Deployed Backend)",
-    "     JWT authenticated management platform with MongoDB dynamic schemas & automated emails.",
+    "  3. SubPulse (Deployed Backend Platform)",
+    "     Automated subscription management with JWT authentication, MongoDB schemas & Nodemailer.",
   ],
   experience: [
     "💼 WORK EXPERIENCE:",
@@ -437,48 +437,48 @@ export const projects: ProjectItem[] = [
     col2Image: "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055753_adc5dcbd-a8e6-49c0-b43a-9b030d835cea.png&w=1280&q=85"
   },
   {
-    id: "subscription-tracker",
-    title: "Subscription Tracker",
-    subtitle: "Automated Management System",
+    id: "subpulse",
+    title: "SubPulse",
+    subtitle: "Automated Subscription Management & Renewal System",
     description:
-      "Built a subscription management platform with secure JWT authentication, automated renewal reminders, and email notifications.",
+      "Built SubPulse, a subscription management & renewal intelligence platform with secure JWT authentication, automated renewal reminders, and email notifications.",
     longDescription:
-      "Designed scalable MongoDB schemas and implemented robust authentication, authorization, and background scheduling workflows. Improved reliability through secure password encryption, validation, and comprehensive error handling.",
+      "Designed scalable MongoDB document schemas and implemented robust JWT authentication, authorization middleware, and automated background scheduling workflows. Enhanced reliability through secure password encryption (bcrypt), input validation, and comprehensive error handling pipelines.",
     featured: true,
     status: "Deployed",
-    type: "Backend Systems",
+    type: "Backend Systems & SaaS",
     github: "https://github.com/Yogesh10217",
     demo: null,
     tech: ["Node.js", "Express.js", "MongoDB", "JWT", "bcrypt", "Nodemailer"],
     features: [
-      "JWT-based authentication system",
-      "Bcrypt password encryption",
-      "Automated email reminders via Nodemailer",
-      "Scalable MongoDB schema design",
-      "Comprehensive error handling",
+      "JWT-based authentication & session security",
+      "Automated renewal reminder scheduler & Nodemailer integration",
+      "Dynamic MongoDB schema for recurring subscription cycles",
+      "Bcrypt password hashing & security validation",
+      "Comprehensive error handling & request logging pipelines",
     ],
     architecture: [
-      { step: "01", label: "Auth", desc: "JWT & bcrypt verification", icon: "AUTH" },
-      { step: "02", label: "API", desc: "Express.js REST endpoints", icon: "API" },
-      { step: "03", label: "Database", desc: "MongoDB dynamic schema", icon: "DB" },
-      { step: "04", label: "Workflows", desc: "Background scheduling", icon: "JOB" },
-      { step: "05", label: "Email", desc: "Nodemailer notifications", icon: "MAIL" },
+      { step: "01", label: "Client Auth", desc: "JWT token & Auth guard middleware", icon: "AUTH" },
+      { step: "02", label: "API Gateway", desc: "Express.js REST routing layer", icon: "API" },
+      { step: "03", label: "Persistence", desc: "MongoDB Mongoose dynamic schema", icon: "DB" },
+      { step: "04", label: "Scheduler", desc: "Background job worker for due renewals", icon: "JOB" },
+      { step: "05", label: "Email Dispatch", desc: "Nodemailer SMTP notification engine", icon: "MAIL" },
     ],
-    challenges: "Designing a database schema that efficiently handles varying subscription cycles (monthly, yearly, custom) while allowing fast queries for upcoming renewals.",
-    learnings: "Properly indexing MongoDB collections based on query patterns drastically improves the performance of background jobs searching for due subscriptions.",
+    challenges: "Handling timezone offsets for global users when scheduling renewal reminders to ensure notifications arrive exactly 24 hours prior to billing.",
+    learnings: "Proper index optimization on date-indexed MongoDB collections significantly speeds up periodic cron worker queries searching for upcoming renewals.",
     decisions: [
       {
         title: "Why Node.js & Express?",
         reason:
-          "The non-blocking I/O model of Node.js is perfect for handling many concurrent API requests and lightweight background tasks like sending emails.",
+          "The non-blocking event-driven architecture handles high-concurrency API traffic while running lightweight background scheduling workers seamlessly.",
       },
       {
         title: "Why MongoDB?",
         reason:
-          "The flexible document model allows for storing varying metadata associated with different types of subscriptions without strict schema migrations.",
+          "The flexible document model allows storing dynamic subscription attributes (monthly, annual, tier metrics) without complex relational database migrations.",
       },
     ],
-    metrics: ["JWT Auth", "Background Workflows", "Dynamic Schema"],
+    metrics: ["100% Automated Reminders", "JWT Auth", "Dynamic Document Schema"],
     col1Images: [
       "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055759_963cfb0b-4bd1-4b0f-9d0a-09bd6cf95b2f.png&w=1280&q=85",
       "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_060108_438f781a-9846-4dcc-89ab-c4e6cb830f5b.png&w=1280&q=85"
