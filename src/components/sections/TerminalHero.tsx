@@ -38,13 +38,10 @@ export const TerminalHero: React.FC<TerminalHeroProps> = ({ onContactClick, onNa
     return () => clearInterval(interval);
   }, []);
 
-  // Auto-scroll terminal log container internally without scrolling the main window
+  // Auto-scroll terminal log container internally without affecting main window scroll
   useEffect(() => {
     if (terminalContainerRef.current) {
-      terminalContainerRef.current.scrollTo({
-        top: terminalContainerRef.current.scrollHeight,
-        behavior: 'smooth',
-      });
+      terminalContainerRef.current.scrollTop = terminalContainerRef.current.scrollHeight;
     }
   }, [logs]);
 
@@ -207,7 +204,7 @@ export const TerminalHero: React.FC<TerminalHeroProps> = ({ onContactClick, onNa
             </div>
 
             {/* Terminal Window Body */}
-            <div ref={terminalContainerRef} className="p-4 sm:p-5 font-mono text-xs sm:text-sm text-cyan-200 h-[340px] overflow-y-auto space-y-3 bg-[#0B0D13]">
+            <div ref={terminalContainerRef} className="p-4 sm:p-5 font-mono text-xs sm:text-sm text-cyan-200 h-[340px] overflow-y-auto overscroll-contain space-y-3 bg-[#0B0D13]">
               {logs.map((log, idx) => (
                 <div key={idx} className="space-y-1">
                   {log.command && (
