@@ -28,7 +28,7 @@ export const TerminalHero: React.FC<TerminalHeroProps> = ({ onContactClick, onNa
     },
   ]);
 
-  const terminalEndRef = useRef<HTMLDivElement>(null);
+  const terminalContainerRef = useRef<HTMLDivElement>(null);
 
   // Rotate roles dynamically every 3 seconds
   useEffect(() => {
@@ -38,9 +38,14 @@ export const TerminalHero: React.FC<TerminalHeroProps> = ({ onContactClick, onNa
     return () => clearInterval(interval);
   }, []);
 
-  // Auto-scroll terminal log
+  // Auto-scroll terminal log container internally without scrolling the main window
   useEffect(() => {
-    terminalEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (terminalContainerRef.current) {
+      terminalContainerRef.current.scrollTo({
+        top: terminalContainerRef.current.scrollHeight,
+        behavior: 'smooth',
+      });
+    }
   }, [logs]);
 
   const handleRunCommand = (cmdStr: string) => {
@@ -202,7 +207,7 @@ export const TerminalHero: React.FC<TerminalHeroProps> = ({ onContactClick, onNa
             </div>
 
             {/* Terminal Window Body */}
-            <div className="p-4 sm:p-5 font-mono text-xs sm:text-sm text-cyan-200 h-[340px] overflow-y-auto space-y-3 bg-[#0B0D13]">
+            <div ref={terminalContainerRef} className="p-4 sm:p-5 font-mono text-xs sm:text-sm text-cyan-200 h-[340px] overflow-y-auto space-y-3 bg-[#0B0D13]">
               {logs.map((log, idx) => (
                 <div key={idx} className="space-y-1">
                   {log.command && (
@@ -222,7 +227,6 @@ export const TerminalHero: React.FC<TerminalHeroProps> = ({ onContactClick, onNa
                   )}
                 </div>
               ))}
-              <div ref={terminalEndRef} />
             </div>
 
             {/* Shortcut Command Chips */}
@@ -231,6 +235,7 @@ export const TerminalHero: React.FC<TerminalHeroProps> = ({ onContactClick, onNa
               {shortcutChips.map((chip) => (
                 <button
                   key={chip}
+                  type="button"
                   onClick={() => handleRunCommand(chip)}
                   className="px-2.5 py-1 rounded bg-cyan-950/70 hover:bg-cyan-500/20 border border-cyan-500/30 text-[11px] font-mono text-cyan-300 transition-colors cursor-pointer"
                 >
